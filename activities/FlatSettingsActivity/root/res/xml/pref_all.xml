@@ -1,0 +1,82 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:title="@string/pref_category_general">
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="example_switch"
+            android:summary="@string/pref_description_social_recommendations"
+            android:title="@string/pref_title_social_recommendations"/>
+
+        <!-- NOTE: EditTextPreference accepts EditText attributes. -->
+        <!-- NOTE: EditTextPreference's summary should be set to its value by the activity code. -->
+        <EditTextPreference
+            android:capitalize="words"
+            android:defaultValue="@string/pref_default_display_name"
+            android:inputType="textCapWords"
+            android:key="example_text"
+            android:maxLines="1"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="@string/pref_title_display_name"/>
+
+        <!-- NOTE: Hide buttons to simplify the UI. Users can touch outside the dialog to
+             dismiss it. -->
+        <!-- NOTE: ListPreference's summary should be set to its value by the activity code. -->
+        <ListPreference
+            android:defaultValue="-1"
+            android:entries="@array/pref_example_list_titles"
+            android:entryValues="@array/pref_example_list_values"
+            android:key="example_list"
+            android:negativeButtonText="@null"
+            android:positiveButtonText="@null"
+            android:title="@string/pref_title_add_friends_to_messages"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/pref_category_notifications">
+        <!-- A 'parent' preference, which enables/disables child preferences (below)
+     when checked/unchecked. -->
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="notifications_new_message"
+            android:title="@string/pref_title_new_message_notifications"/>
+
+        <!-- Allows the user to choose a ringtone in the 'notification' category. -->
+        <!-- NOTE: This preference will be enabled only when the checkbox above is checked. -->
+        <!-- NOTE: RingtonePreference's summary should be set to its value by the activity code. -->
+        <RingtonePreference
+            android:defaultValue="content://settings/system/notification_sound"
+            android:dependency="notifications_new_message"
+            android:key="notifications_new_message_ringtone"
+            android:ringtoneType="notification"
+            android:title="@string/pref_title_ringtone"/>
+
+        <!-- NOTE: This preference will be enabled only when the checkbox above is checked. -->
+        <SwitchPreference
+            android:defaultValue="true"
+            android:dependency="notifications_new_message"
+            android:key="notifications_new_message_vibrate"
+            android:title="@string/pref_title_vibrate"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/pref_category_data_sync">
+        <!-- NOTE: Hide buttons to simplify the UI. Users can touch outside the dialog to
+     dismiss it. -->
+        <!-- NOTE: ListPreference's summary should be set to its value by the activity code. -->
+        <ListPreference
+            android:defaultValue="180"
+            android:entries="@array/pref_sync_frequency_titles"
+            android:entryValues="@array/pref_sync_frequency_values"
+            android:key="sync_frequency"
+            android:negativeButtonText="@null"
+            android:positiveButtonText="@null"
+            android:title="@string/pref_title_sync_frequency"/>
+
+        <!-- This preference simply launches an intent when selected. Use this UI sparingly, per
+             design guidelines. -->
+        <Preference android:title="@string/pref_title_system_sync_settings">
+            <intent android:action="android.settings.SYNC_SETTINGS"/>
+        </Preference>
+    </PreferenceCategory>
+
+</PreferenceScreen>

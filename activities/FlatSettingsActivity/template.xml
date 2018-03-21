@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<template
+        format="5"
+        revision="5"
+        name="Flat Settings Activity"
+        description="Creates a new application settings activity that a flat single list of preferences."
+        minApi="11"
+        minBuildApi="11"
+        category="Activity">
+
+    <dependency name="android-support-v4" revision="8"/>
+
+    <category value="Activity"/>
+    <formfactor value="Mobile"/>
+
+    <parameter
+            id="instantAppActivityHost"
+            name="Instant App URL Host"
+            type="string"
+            suggest="${companyDomain}"
+            default="instantapp.example.com"
+            visibility="isInstantApp!false"
+            help="The domain to use in the Instant App route for this activity"/>
+
+    <parameter
+            id="instantAppActivityRouteType"
+            name="Instant App URL Route Type"
+            type="enum"
+            default="pathPattern"
+            visibility="isInstantApp!false"
+            help="The type of route to use in the Instant App route for this activity" >
+            <option id="path">Path</option>
+            <option id="pathPrefix">Path Prefix</option>
+            <option id="pathPattern">Path Pattern</option>
+    </parameter>
+
+    <parameter
+            id="instantAppActivityRoute"
+            name="Instant App URL Route"
+            type="string"
+            default="/.*"
+            visibility="isInstantApp!false"
+            help="The route to use in the Instant App route for this activity"/>
+
+    <parameter
+            id="activityClass"
+            name="Activity Name"
+            type="string"
+            constraints="class|unique|nonempty"
+            default="SettingsActivity"
+            help="The name of the activity class to create"/>
+
+    <parameter
+            id="activityTitle"
+            name="Title"
+            type="string"
+            constraints="nonempty"
+            default="Settings"
+            help="The name of the activity."/>
+
+    <parameter
+            id="parentActivityClass"
+            name="Hierarchical Parent"
+            type="string"
+            constraints="activity|exists|empty"
+            default=""
+            help="The hierarchical parent activity, used to provide a default implementation for the 'Up' button"/>
+
+    <parameter
+            id="packageName"
+            name="Package name"
+            type="string"
+            constraints="package"
+            default="com.mycompany.myapp"/>
+
+    <!-- 128x128 thumbnails relative to template.xml -->
+    <thumbs>
+        <!-- default thumbnail is required -->
+        <thumb>template_settings_activity.png</thumb>
+    </thumbs>
+
+    <globals file="globals.xml.ftl"/>
+    <execute file="recipe.xml.ftl"/>
+
+</template>
