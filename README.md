@@ -1,7 +1,8 @@
 # Android Studio Templates
 
 ### Installation
-Copy the template folder you want into your [path to android studio]/plugins/android/lib/templates directory
+* Copy the template folder you want into your [path to android studio]/plugins/android/lib/templates directory.  
+* Restart Android Studio if it's running.
 
 ## Flat Settings Activity
 Adapted from the standard Google Android Studio Settings activity but flattened, no headings for when you have a short list of settings.  
