@@ -3,7 +3,7 @@
         format="5"
         revision="5"
         name="Flat Settings Activity"
-        description="Creates a new application settings activity that a flat single list of preferences."
+        description="Creates a new application settings activity that is a flat single list of preferences."
         minApi="11"
         minBuildApi="11"
         category="Activity">

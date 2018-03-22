@@ -13,5 +13,4 @@ Both Java and Kotlin templates provided.
 ### Acknowledgements
 Android Open Source Project for basis of some of these templates.
 
-### Copyright
 Copyright (c) 2018 CodeChimp
