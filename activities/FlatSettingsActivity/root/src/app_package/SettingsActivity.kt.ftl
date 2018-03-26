@@ -99,7 +99,7 @@ class ${activityClass} : ${preferenceSuperClass}() {
         override fun onOptionsItemSelected(item: MenuItem): Boolean {
             val id = item.itemId
             if (id == android.R.id.home) {
-                activity().onBackPressed()
+                activity.onBackPressed()
                 return true
             }
             return super.onOptionsItemSelected(item)
