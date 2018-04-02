@@ -21,14 +21,8 @@ import android.support.v4.app.NavUtils
 </#if>
 
 /**
- * A [PreferenceActivity] that presents a set of application settings. On
- * handset devices, settings are presented as a single list. On tablets,
- * settings are split by category, with category headers shown to the left of
- * the list of settings.
- *
- * See [Android Design: Settings](http://developer.android.com/design/patterns/settings.html)
- * for design guidelines and the [Settings API Guide](http://developer.android.com/guide/topics/ui/settings.html)
- * for more information on developing a Settings UI.
+ * A {@link PreferenceActivity} that presents a flat list of application settings 
+ * with preference categories.
  */
 class ${activityClass} : ${preferenceSuperClass}() {
 
@@ -76,8 +70,7 @@ class ${activityClass} : ${preferenceSuperClass}() {
     }
 
     /**
-     * This fragment shows general preferences only. It is used when the
-     * activity is showing a two-pane settings UI.
+     * This fragment shows all preferences
      */
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     class AllPreferenceFragment : PreferenceFragment() {
