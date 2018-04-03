@@ -74,4 +74,8 @@
     <string name="pref_ringtone_silent">Silent</string>
 
     <string name="pref_title_vibrate">Vibrate</string>
+
+    <!-- Example settings for About category -->
+    <string name="pref_category_about">About</string>
+    <string name="pref_title_version">Version</string>
 </resources>

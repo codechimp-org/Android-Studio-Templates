@@ -7,6 +7,7 @@
 ## Flat Settings Activity
 Adapted from the standard Google Android Studio Settings activity but flattened, no headings for when you have a short list of settings.  
 Categories are used to separate sections of settings.  
+In addition to the standard settings I've also included an About category and Version Number preference showing the current app version.  This can easily be removed if not wanted.  
 Both Java and Kotlin templates provided.
 
 ![flatsettings](artwork/flatsettings.png)

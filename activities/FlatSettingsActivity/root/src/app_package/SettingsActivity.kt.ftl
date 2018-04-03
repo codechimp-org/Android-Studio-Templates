@@ -3,6 +3,7 @@ package ${escapeKotlinIdentifiers(packageName)}
 import android.annotation.TargetApi
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.media.RingtoneManager
 import android.net.Uri
@@ -87,6 +88,9 @@ class ${activityClass} : ${preferenceSuperClass}() {
             bindPreferenceSummaryToValue(findPreference("example_list"))
             bindPreferenceSummaryToValue(findPreference("notifications_new_message_ringtone"))
             bindPreferenceSummaryToValue(findPreference("sync_frequency"))
+
+            // Set static preference summaries
+            setPreferenceSummary(findPreference("version"), getVersionName(activity))
         }
 
         override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -171,6 +175,24 @@ class ${activityClass} : ${preferenceSuperClass}() {
                     PreferenceManager
                             .getDefaultSharedPreferences(preference.context)
                             .getString(preference.key, ""))
+        }
+
+        /**
+         * Set a preference's summary to a value.
+         */
+        private fun setPreferenceSummary(preference: Preference, value: String) {
+            preference.summary = value
+        }
+
+        /**
+         * Get the version name of the current application
+         */
+        private fun getVersionName(context: Context): String {
+            return try {
+                context.packageManager.getPackageInfo(context.packageName, 0).versionName
+            } catch (e: PackageManager. NameNotFoundException) {
+                ""
+            }
         }
     }
 }

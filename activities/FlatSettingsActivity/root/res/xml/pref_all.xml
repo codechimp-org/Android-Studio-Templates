@@ -79,4 +79,12 @@
         </Preference>
     </PreferenceCategory>
 
+    <PreferenceCategory android:title="@string/pref_category_about">
+        <Preference
+            android:key="version"
+            android:selectable="false"
+            android:summary="@string/pref_title_version"
+            android:title="@string/pref_title_version"/>
+    </PreferenceCategory>
+
 </PreferenceScreen>

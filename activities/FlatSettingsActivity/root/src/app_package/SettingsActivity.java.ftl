@@ -3,6 +3,7 @@ package ${packageName};
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
@@ -146,6 +147,25 @@ public class ${activityClass} extends ${preferenceSuperClass} {
     }
 
     /**
+     * Set a preference's summary to a value.
+     */
+    private static void setPreferenceSummary(Preference preference, String value) {
+        preference.setSummary(value);
+    }
+
+    /**
+     * Get the version name of the current application
+     */
+    private static String getVersionName(Context context) {
+        try {
+            return context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionName;
+        }
+        catch (PackageManager.NameNotFoundException e) {
+            return "";
+        }
+    }
+
+    /**
      * This method stops fragment injection in malicious applications.
      * Make sure to deny any unknown fragments here.
      */
@@ -173,6 +193,10 @@ public class ${activityClass} extends ${preferenceSuperClass} {
             bindPreferenceSummaryToValue(findPreference("example_list"));
             bindPreferenceSummaryToValue(findPreference("notifications_new_message_ringtone"));
             bindPreferenceSummaryToValue(findPreference("sync_frequency"));
+
+            // Set static preference summaries
+            setPreferenceSummary(findPreference("version"), getVersionName(getActivity()));
+
         }
 
         @Override
